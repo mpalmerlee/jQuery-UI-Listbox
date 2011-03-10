@@ -28,6 +28,57 @@
     hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
     .footer { text-align:center; padding-top:30px; font-style: italic; }
   </style>
+	<link type="text/css" href="css/custom-theme/jquery-ui-1.8.7.custom.css" rel="stylesheet" />
+	<link type="text/css" href="css/js-listbox-style.css" rel="stylesheet" />	
+
+	<script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="jquery-ui-1.8.7.custom.min.js"></script>
+	<script type="text/javascript" src="js-inherit.js"></script>
+	<script type="text/javascript" src="js-listbox.js"></script>
+	
+	<script type="text/javascript">
+		$(document).ready(function() {
+			window.listBoxAllItems = new JSListBox({'containerSelector':'ListBoxAllItems'});
+			window.listBoxSelectedItems = new JSListBox({'containerSelector':'ListBoxSelectedItems'});
+			
+			var allItems = [];
+			allItems.push(new MyListBoxItem("C/C++"));
+			allItems.push(new MyListBoxItem("Java"));
+			allItems.push(new MyListBoxItem("JavaScript"));
+			allItems.push(new MyListBoxItem("C#"));
+			allItems.push(new MyListBoxItem("Python"));
+			allItems.push(new MyListBoxItem("Ruby"));
+			
+			window.listBoxAllItems.addItems(allItems);
+		});
+		
+		MyListBoxItem = JSListBox.Item.extend({
+
+			text: "",
+			
+			init: function(text) {
+				this.text = text;
+			},
+
+			render: function() {
+				return '<a href="#">' + this.text + '</a>';
+			},
+			
+			onClick: function() {
+				var item = new JSListBox.Item();
+				item.value = this.text + " item clicked.";
+				window.listBoxSelectedItems.addItem(item);
+			},
+			
+			onDblClick: function() {
+				var item = new JSListBox.Item();
+				item.value = this.text + " item double clicked.";
+				item.enabled = false;
+				window.listBoxSelectedItems.addItem(item);
+			}
+			
+		});
+	</script>
 </head>
 
 <body>
@@ -78,6 +129,13 @@ http://www.masteredsoftware.com/</p>
       get the source code on GitHub : <a href="http://github.com/mpalmerlee/jQuery-UI-Listbox">mpalmerlee/jQuery-UI-Listbox</a>
     </div>
 
+	<table>
+	<tr height="225">
+		<td width="180"><div id="ListBoxAllItems" style="height:225px;"></div></td>
+		<td width="200"><div id="ListBoxSelectedItems" style="height:225px;"></div></td>
+	</tr>
+	</table>
+	
   </div>
 
   <script type="text/javascript">
