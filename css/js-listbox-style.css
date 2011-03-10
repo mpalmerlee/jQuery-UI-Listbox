@@ -1,0 +1,12 @@
+/* Custom js-listbox style
+----------------------------------*/
+.ui-listbox-state-highlight
+{
+	background: #336699;
+	opacity: .7; filter:Alpha(Opacity=70);
+}
+
+.menuContainerJSListBox
+{
+	overflow: auto;
+}

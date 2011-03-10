@@ -1,0 +1,14 @@
+jQuery UI Listbox
+jQuery UI Plugin which leverages the jquery ui menu control, styled with your existing jquery ui theme, features hover highlighting, click and double click.  This plugin will not be officially released until jQuery UI version 1.9 is released (which includes the menu as an officially supported widget).
+
+js-listbox.js
+Written by Matt Palmerlee
+Mastered Software
+http://www.masteredsoftware.com/
+
+MIT Licensed
+
+Leverages jQuery javascript DOM library and jQuery UI
+
+uses John Resig's Simple JS Inheritance lib:
+http://ejohn.org/blog/simple-javascript-inheritance/
