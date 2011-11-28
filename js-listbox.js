@@ -156,7 +156,11 @@ $.widget("ui.list", {
 				}
 				if(self.highlighted)
 				{
-					self.activate( event, self.highlighted );
+					var highlightedItem = self.highlighted;
+					if (self.clickHandler && !self.clickHandler()) {
+						return;
+					}
+					self.activate( event, highlightedItem );
 					// temporary
 					event.preventDefault();
 					self.select( event );
@@ -176,6 +180,12 @@ $.widget("ui.list", {
 		this.refresh();
 	},
 	
+	// handler should be a function which returns true or false.
+	// can be used to validate a condition before highlighting and activating an item.
+	setClickHandler: function(handler) {
+		this.clickHandler = handler;
+	},
+
 	refresh: function() {
 		var self = this;
 
